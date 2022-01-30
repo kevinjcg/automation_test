@@ -2,6 +2,8 @@ import LoginPage from  '../pageobjects/login.page';
 import InventoryPage from  '../pageobjects/inventory.page';
 import CartPage from  '../pageobjects/cart.page';
 import CheckoutStepOnePage from  '../pageobjects/checkout_step_one.page';
+import CheckoutStepTwoPage from  '../pageobjects/checkout_step_two.page';
+import CheckoutCompletePage from  '../pageobjects/checkout_complete.page';
 
 let username = 'standard_user';
 let password = 'secret_sauce';
@@ -64,7 +66,6 @@ describe('Validate that required fields in the checkout form', () => {
 
         CheckoutStepOnePage.goToCheckOutOverViewForm();
         expect(CheckoutStepOnePage.getErrorElement()).toExist();
-        expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-one.html');
     });
 
     it('Verify go to the next step', () => {
@@ -72,5 +73,30 @@ describe('Validate that required fields in the checkout form', () => {
         CheckoutStepOnePage.setRequiredFields('Kevin', 'Calero', '70511');
         CheckoutStepOnePage.goToCheckOutOverViewForm();
         expect(browser).toHaveUrlContaining('/checkout-step-two.html');
+    });
+});
+
+describe('Validate the sum of the item total', () => {
+
+    // it('Sub total should be equal to 37.98', () => {
+    //     expect(CheckoutStepTwoPage.getSubTotal()).toBe(37.98);
+    //     expect(CheckoutStepTwoPage.itemSubTotal).toHaveTextContaining('Item total: $37.98');
+    // });
+
+    // it('Total should be equal to 41.02', () => {
+    //     expect(CheckoutStepTwoPage.getTotal()).toBe(41.02);
+    //     expect(CheckoutStepTwoPage.itemTotal).toHaveTextContaining('Total: $41.02');
+    // });
+
+    it('should move to the final step', () => {
+        CheckoutStepTwoPage.goToFinish();
+        expect(browser).toHaveUrlContaining('/checkout-complete.html');
+    });
+});
+
+describe('Validate that “THANK YOU FOR YOUR ORDER” is displayed', () => {
+    it('farewell message should be displayed', () => {
+        expect(CheckoutCompletePage.farewellMessage).toBeDisplayed();
+        expect(CheckoutCompletePage.farewellMessage.getText()).toBe('THANK YOU FOR YOUR ORDER');
     });
 });
