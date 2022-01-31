@@ -78,15 +78,15 @@ describe('Validate that required fields in the checkout form', () => {
 
 describe('Validate the sum of the item total', () => {
 
-    // it('Sub total should be equal to 37.98', () => {
-    //     expect(CheckoutStepTwoPage.getSubTotal()).toBe(37.98);
-    //     expect(CheckoutStepTwoPage.itemSubTotal).toHaveTextContaining('Item total: $37.98');
-    // });
+    it('Sub total should be equal to 39.98', () => {
+        expect(CheckoutStepTwoPage.getSubTotal()).toBe(39.98);
+        expect(CheckoutStepTwoPage.itemSubTotal).toHaveTextContaining('Item total: $39.98');
+    });
 
-    // it('Total should be equal to 41.02', () => {
-    //     expect(CheckoutStepTwoPage.getTotal()).toBe(41.02);
-    //     expect(CheckoutStepTwoPage.itemTotal).toHaveTextContaining('Total: $41.02');
-    // });
+    it('Total should be equal to 43.18', () => {
+        expect(CheckoutStepTwoPage.getTotal()).toBe(43.18);
+        expect(CheckoutStepTwoPage.itemTotal).toHaveTextContaining('Total: $43.18');
+    });
 
     it('should move to the final step', () => {
         CheckoutStepTwoPage.goToFinish();

@@ -1,18 +1,15 @@
 import Page from './page';
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
  class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
+    
     get inputUsername () { return $('#user-name') }
     get inputPassword () { return $('#password') }
     get btnSubmit () { return $('#login-button') }
 
     /**
-     * Login using username and password
+     * Fill the login form and click the submit button
+     * @param {string} username User name
+     * @param {string} password Password
      */
     login (username: string, password: string) {
         this.inputUsername.setValue(username);
@@ -21,7 +18,8 @@ import Page from './page';
     }
 
     /**
-     * Open login page
+     * Redirect to a specific url
+     * @param {string} path Site to go
      */
     open (path: string) {
         return super.open(path);
