@@ -76,7 +76,7 @@ describe('Validate that required fields in the checkout form', () => {
     });
 });
 
-describe('Validate the sum of the item total', () => {
+describe('Validate the Totals', () => {
 
     it('Sub total should be equal to 39.98', () => {
         expect(CheckoutStepTwoPage.getSubTotal()).toBe(39.98);
@@ -94,8 +94,9 @@ describe('Validate the sum of the item total', () => {
     });
 });
 
-describe('Validate that “THANK YOU FOR YOUR ORDER” is displayed', () => {
-    it('farewell message should be displayed', () => {
+describe('Validate the complete checkout page', () => {
+    
+    it('Verify that thanks message is displayed', () => {
         expect(CheckoutCompletePage.farewellMessage).toBeDisplayed();
         expect(CheckoutCompletePage.farewellMessage.getText()).toBe('THANK YOU FOR YOUR ORDER');
     });
